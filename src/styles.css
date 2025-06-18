@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-roboto: "Roboto", "sans-serif";
+  --font-open-sans: "Open Sans", "sans-serif"; 
+}
