@@ -29,7 +29,7 @@ Projekt używa Tailwind CSS v4.
 - Klasy do zapewnienia responsywności:
     - Jeden breakpoint prefix: style z `md:` dla większych ekranów, reszta mobile-first
 - Podział layoutu:
-    - grid na desktop, np. `grid-cols-3` na wyśrodkowanym kontenerze, `col-span-3` na liście gdy element nie wybrany, `col-span-1` po wybraniu elementu + `col-span-2` dla rozsuniętego widoku szczegółów
+    - grid na desktop, np. `grid-cols-3` na wyśrodkowanym kontenerze, `col-span-3` na liście gdy element nie wybrany, `col-span-1` po wybraniu elementu + `col-span-2` dla rozsuniętego widoku szczegółów. UPDATE: jednak ostatecznie na flexbox łatwiej mi było zarządzać animacjami i dostosowaniem szerokości
     - desktop kontener listy prawdopobodnie z nałożoną procentową szerokością (np `w-1/2`), mobile `w-screen`
     - mobile prawdopodobnie układ flexbox, `flex-col`
 - Czcionki
@@ -89,3 +89,5 @@ Planowane rozpoczęcie: 19.06
     - 9:30 przerwa techniczna, bug fixing - klasy tailwinda przestały działać
     - 10:15 resume kodowania po naprawieniu buga
     - 11:10 zmiana struktury, ujednolicenie task-list-view.component i task-list.component do operowania wybranym taskiem w jednym miejscu
+    - 12:10 przerwa
+    - 12:30 resume, dokończenie animacji i layoutu

@@ -1,35 +1,78 @@
-<main class="h-screen w-screen bg-stone-50">
-  <div class="mx-auto h-full w-full max-w-[1200px] overflow-y-auto px-4 py-6">
-    <div class="flex flex-col gap-6 md:flex-row">
-      <div class="w-full md:w-1/2">
-        <section aria-labelledby="tasks-heading">
-          <h2
-            id="tasks-heading"
-            class="mb-4 text-3xl font-bold"
-          >
-            Zadania
-          </h2>
+<main class="h-screen w-screen overflow-hidden bg-stone-50">
+  <div class="relative mx-auto flex h-full max-w-[1200px] px-4 py-6">
+    <!-- Lista zadań -->
+    <div
+      class="flex w-full flex-col transition-all duration-300 ease-in-out"
+      [ngClass]="{
+        'md:w-full': !selectedTask(),
+        'md:w-[55%]': selectedTask(),
+      }"
+    >
+      <div class="flex h-full flex-col md:items-center">
+        <section
+          aria-labelledby="tasks-heading"
+          class="flex h-full w-full flex-col md:max-w-2xl"
+        >
+          <div class="flex-shrink-0 pb-4">
+            <h2
+              id="tasks-heading"
+              class="text-3xl font-bold text-gray-900"
+            >
+              Zadania
+            </h2>
+          </div>
 
-          <ul>
-            @for (task of tasks; track $index) {
-              <li>
-                <task-list-item
-                  [task]="task"
-                  [isSelected]="selectedTask()?.id === task.id"
-                  (click)="selectTask(task)"
-                ></task-list-item>
-              </li>
-            }
-          </ul>
+          <div class="flex-1 overflow-hidden">
+            <ul class="h-full space-y-2 overflow-y-auto pr-2 pb-4">
+              @for (task of tasks; track task.id) {
+                <li>
+                  <task-list-item
+                    [task]="task"
+                    [isSelected]="selectedTask()?.id === task.id"
+                    (click)="selectTask(task)"
+                  ></task-list-item>
+                </li>
+              }
+            </ul>
+          </div>
         </section>
       </div>
+    </div>
 
-      <div class="hidden md:block md:w-1/2">
+    <!-- Szczegóły - Desktop -->
+    @if (selectedTask()) {
+      <div
+        class="hidden transition-all duration-300 ease-in-out md:flex md:w-[45%] md:items-center md:justify-center md:pl-6"
+        [ngClass]="{
+          'md:translate-x-full md:opacity-0': !selectedTask(),
+          'md:translate-x-0 md:opacity-100': selectedTask(),
+        }"
+      >
         <task-details-view
           [task]="selectedTask()"
           [onClose]="clearSelectedTask"
+          [screenIsMobile]="false"
+          class="w-full max-w-lg"
         ></task-details-view>
       </div>
+    }
+
+    <!-- Szczegóły - Mobile -->
+    <div
+      class="fixed inset-0 z-50 flex flex-col bg-white transition-transform duration-300 ease-in-out md:hidden"
+      [ngClass]="{
+        'translate-y-full': !selectedTask(),
+        'translate-y-0': selectedTask(),
+      }"
+    >
+      @if (selectedTask()) {
+        <task-details-view
+          [task]="selectedTask()"
+          [onClose]="clearSelectedTask"
+          [screenIsMobile]="true"
+          class="h-full"
+        ></task-details-view>
+      }
     </div>
   </div>
 </main>

@@ -1,0 +1,5 @@
+/* Dodaj jeśli potrzebujesz dodatkowych stylów */
+:host {
+  display: block;
+  height: 100%;
+}

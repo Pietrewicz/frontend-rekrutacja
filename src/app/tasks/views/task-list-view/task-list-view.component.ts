@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
 import { Task, TaskStatus } from '../../models/task';
 import { TaskDetailsViewComponent } from '../task-details-view/task-details-view.component';
 import { TaskListItemComponent } from '../../components/task-list-item/task-list-item.component';
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TaskListViewComponent {
   selectedTask = signal<Task | null>(null);
+  screenIsMobile = signal(false);
   tasks: Task[] = [
     {
       id: 1,
@@ -103,9 +104,24 @@ export class TaskListViewComponent {
     },
   ];
 
-  clearSelectedTask = () => this.selectedTask.set(null);
+  clearSelectedTask = () => {
+    this.selectedTask.set(null);
+  };
 
   selectTask(task: Task) {
     this.selectedTask.set(task);
+  }
+
+  ngOnInit() {
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize() {
+    this.screenIsMobile.set(window.innerWidth < 768);
   }
 }
