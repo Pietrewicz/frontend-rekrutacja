@@ -1,78 +1,92 @@
 <div class="flex h-full flex-col">
   <!-- Desktop container -->
   <div
-    class="flex h-full w-full flex-col bg-white md:rounded-xl md:p-6 md:shadow-lg"
+    class="flex h-full w-full flex-col bg-white md:rounded-xl md:shadow-lg"
     [ngClass]="{
-      'p-0': screenIsMobile,
-      'max-w-2xl': !screenIsMobile,
+      'justify-between': screenIsMobile,
+      'md:p-6': !screenIsMobile,
     }"
   >
-    <!-- Nagłówek i status -->
-    <div class="flex items-start justify-between p-6 pb-3 md:p-0 md:pb-3">
-      <task-status [status]="task?.status"></task-status>
+    <div class="flex-1 px-6 pt-6 md:px-0 md:pt-0">
+      <!-- Nagłówek i status -->
+      <div class="mb-4 flex items-start justify-between">
+        <task-status [status]="task?.status"></task-status>
 
-      <button
-        aria-label="Zamknij szczegóły"
-        class="cursor-pointer text-2xl leading-none text-gray-400 transition duration-200 hover:text-gray-700"
-        (click)="onClose?.()"
-      >
-        <i class="iconoir-xmark"></i>
-      </button>
-    </div>
+        <button
+          aria-label="Zamknij szczegóły"
+          class="cursor-pointer text-2xl leading-none text-gray-400 transition duration-200 hover:text-gray-700"
+          (click)="onClose?.()"
+        >
+          <i class="iconoir-xmark"></i>
+        </button>
+      </div>
 
-    <!-- Tytuł -->
-    <h2
-      class="px-6 text-2xl leading-tight font-bold text-gray-900 md:px-0 md:text-3xl"
-    >
-      {{ task?.title }}
-    </h2>
+      <!-- Tytuł -->
+      <h2 class="mb-3 text-2xl leading-tight font-bold text-gray-900">
+        {{ task?.title }}
+      </h2>
 
-    <!-- Osoba przypisana -->
-    <div
-      class="mt-3 flex items-center gap-3 px-6 text-sm text-gray-500 md:px-0"
-    >
-      @if (task?.user) {
-        <img
-          [src]="'assets/img/' + task?.user?.avatar"
-          alt="{{ task?.user?.name }}"
-          class="h-8 w-8 rounded-full object-cover"
-        />
-        <span>{{ task?.user?.name }}</span>
-      } @else {
-        <i class="iconoir-user-xmark text-xl text-gray-400"></i>
-        <span>Nie przypisano</span>
+      <!-- Osoba przypisana -->
+      <div class="mb-4 flex items-center gap-3 text-sm text-gray-600">
+        @if (task?.user) {
+          <img
+            [src]="'assets/img/' + task?.user?.avatar"
+            alt="{{ task?.user?.name }}"
+            class="h-8 w-8 rounded-full object-cover"
+          />
+          <span>{{ task?.user?.name }}</span>
+        } @else {
+          <div class="flex items-center gap-2 text-gray-400">
+            <i class="iconoir-user-xmark text-xl"></i>
+            <span>Nie przypisano</span>
+          </div>
+        }
+      </div>
+
+      <!-- Opis -->
+      <p class="mb-6 text-base leading-relaxed text-gray-700">
+        {{ task?.description }}
+      </p>
+
+      <!-- Szczegóły: czas i termin -->
+      <div class="flex items-center gap-6 text-sm text-gray-600">
+        <div class="flex items-center gap-2">
+          <i class="iconoir-clock text-base"></i>
+          <span>{{ task?.time }}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="relative">
+            <i class="iconoir-calendar text-base"></i>
+            @if (isOverdue()) {
+              <span class="absolute -top-1 -right-1 flex h-2 w-2">
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex h-2 w-2 rounded-full bg-red-500"
+                ></span>
+              </span>
+            }
+          </div>
+          <span>
+            {{ task?.dueDate | date: "dd.MM.yyyy" }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Nawigacja mobilna -->
+      @if (screenIsMobile) {
+        <nav class="mt-auto border-t border-gray-200 bg-white px-6 py-4">
+          <button
+            (click)="onClose?.()"
+            class="mx-auto flex items-center text-base text-gray-700"
+            aria-label="Wróć do listy"
+          >
+            <i class="iconoir-arrow-left mr-2 text-lg"></i>
+            <span>Powrót do listy</span>
+          </button>
+        </nav>
       }
     </div>
-
-    <!-- Opis -->
-    <p class="mt-4 px-6 text-base leading-relaxed text-gray-700 md:px-0">
-      {{ task?.description }}
-    </p>
-
-    <!-- Szczegóły: czas i termin -->
-    <div class="mt-4 flex gap-6 px-6 text-sm text-gray-600 md:px-0">
-      <span class="flex items-center gap-2">
-        <i class="iconoir-clock text-base"></i>
-        <span>{{ task?.time }}</span>
-      </span>
-      <span class="flex items-center gap-2">
-        <i class="iconoir-calendar text-base"></i>
-        <span>{{ task?.dueDate | date: "dd.MM.yyyy" }}</span>
-      </span>
-    </div>
   </div>
-
-  <!-- Nawigacja mobilna -->
-  @if (screenIsMobile) {
-    <nav class="mt-auto border-t border-gray-200 bg-white px-6 py-4">
-      <button
-        (click)="onClose?.()"
-        class="mx-auto flex items-center text-base font-medium text-gray-700"
-        aria-label="Wróć do listy"
-      >
-        <i class="iconoir-arrow-left mr-2 text-xl"></i>
-        <span>Powrót do listy</span>
-      </button>
-    </nav>
-  }
 </div>

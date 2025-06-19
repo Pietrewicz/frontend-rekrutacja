@@ -91,3 +91,6 @@ Planowane rozpoczęcie: 19.06
     - 11:10 zmiana struktury, ujednolicenie task-list-view.component i task-list.component do operowania wybranym taskiem w jednym miejscu
     - 12:10 przerwa
     - 12:30 resume, dokończenie animacji i layoutu
+    - 13:20 ukończenie 
+
+    Łączny czas kodowania: ~3h 50min

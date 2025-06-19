@@ -1,5 +1,17 @@
-/* Dodaj jeśli potrzebujesz dodatkowych stylów */
 :host {
   display: block;
   height: 100%;
+}
+
+@media (min-width: 768px) {
+  :host {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  :host > div {
+    height: auto;
+    width: 100%;
+  }
 }

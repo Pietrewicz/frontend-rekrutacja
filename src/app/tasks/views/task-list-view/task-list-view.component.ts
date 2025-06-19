@@ -21,7 +21,7 @@ export class TaskListViewComponent {
         'Sprawdzenie zgodności faktury od dostawcy komputerów z zamówieniem. Weryfikacja cen, ilości i specyfikacji sprzętu.',
       status: TaskStatus.IN_PROGRESS,
       time: '45 min',
-      dueDate: new Date(2025, 6, 19),
+      dueDate: new Date(2025, 5, 12),
       user: {
         name: 'Anna Kowalczyk',
         avatar: 'av5_w.JPG',
@@ -34,7 +34,7 @@ export class TaskListViewComponent {
         'Aktualizacja adresu i danych kontaktowych klienta po przeprowadzce. Synchronizacja z systemem CRM i modułem wysyłek.',
       status: TaskStatus.TO_DO,
       time: '1h 45min',
-      dueDate: new Date(2025, 6, 22),
+      dueDate: new Date(2025, 5, 22),
       user: {
         name: 'Marcin Nowak',
         avatar: 'av1.JPG',
