@@ -73,20 +73,20 @@
           </span>
         </div>
       </div>
-
-      <!-- Nawigacja mobilna -->
-      @if (screenIsMobile) {
-        <nav class="mt-auto border-t border-gray-200 bg-white px-6 py-4">
-          <button
-            (click)="onClose?.()"
-            class="mx-auto flex items-center text-base text-gray-700"
-            aria-label="Wróć do listy"
-          >
-            <i class="iconoir-arrow-left mr-2 text-lg"></i>
-            <span>Powrót do listy</span>
-          </button>
-        </nav>
-      }
     </div>
+
+    <!-- Nawigacja mobilna -->
+    @if (screenIsMobile) {
+      <nav class="mt-auto border-t border-gray-200 bg-white px-6 py-4">
+        <button
+          (click)="onClose?.()"
+          class="mx-auto flex items-center text-base text-gray-700"
+          aria-label="Wróć do listy"
+        >
+          <i class="iconoir-arrow-left mr-2 text-lg"></i>
+          <span>Powrót do listy</span>
+        </button>
+      </nav>
+    }
   </div>
 </div>
