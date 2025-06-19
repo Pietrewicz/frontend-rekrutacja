@@ -86,3 +86,5 @@ Dodatkowo, gdy data terminu już minęła, na ikonie pojawi się alert (ping).
 Planowane rozpoczęcie: 19.06
 19.06
     - 8:30 początek zadania, utworzenie komponentów
+    - 9:30 przerwa techniczna, bug fixing - klasy tailwinda przestały działać
+    - 10:15 resume kodowania po naprawieniu buga

@@ -1,1 +1,57 @@
-<p>task-list-item works!</p>
+<li
+  [ngClass]="{ 'border-black!': isSelected }"
+  class="mb-3 w-full max-w-[600px] cursor-pointer rounded-xl border-2 border-white bg-white p-4 shadow-sm transition duration-200 hover:bg-gray-100 max-md:active:focus:scale-95"
+  role="button"
+  tabindex="0"
+>
+  <article class="flex w-full items-start justify-between gap-4">
+    <div class="flex w-full items-center gap-3">
+      <img
+        [src]="'assets/img/' + task?.user?.avatar"
+        alt="{{ task?.user?.name || 'Nieprzypisano' }}"
+        class="h-8 w-8 rounded-full object-cover"
+      />
+
+      <div class="w-full">
+        <div class="mb-2 flex w-full items-start justify-between">
+          <!-- Tytuł -->
+          <h3
+            id="task-{{ task?.id }}-title"
+            class="text-base font-semibold"
+          >
+            {{ task?.title }}
+          </h3>
+
+          <!-- Status -->
+          <span
+            [ngClass]="{
+              'bg-orange-100 text-orange-600': task?.status === 'W trakcie',
+              'bg-blue-100 text-blue-600': task?.status === 'Do zrobienia',
+              'bg-green-100 text-green-600': task?.status === 'Ukończone',
+            }"
+            class="flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold whitespace-nowrap"
+          >
+            <i
+              [ngClass]="{
+                'iconoir-refresh': task?.status === 'W trakcie',
+                hidden: task?.status === 'Do zrobienia',
+                'iconoir-check': task?.status === 'Ukończone',
+              }"
+            ></i>
+            {{ task?.status }}
+          </span>
+        </div>
+
+        <div class="mt-1 flex items-center gap-4 text-xs text-gray-500">
+          <span class="flex items-center gap-1">
+            <i class="iconoir-clock text-sm"></i> {{ task?.time }}
+          </span>
+          <span class="flex items-center gap-1">
+            <i class="iconoir-calendar text-sm"></i>
+            {{ task?.dueDate | date: "dd.MM.yyyy" }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </article>
+</li>

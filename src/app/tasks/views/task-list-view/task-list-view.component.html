@@ -1,12 +1,13 @@
 <main class="h-screen w-screen bg-stone-50">
-  <div
-    class="mx-auto my-auto flex w-full flex-col px-4 py-6 md:max-w-[1200px] md:grid-cols-3 md:flex-row"
-  >
-    <div class="md:col-span-3">
-      <h1 class="mb mb-7 text-left font-open-sans text-3xl font-extrabold">
-        Zadania
-      </h1>
-      <task-list [tasks]="tasks"></task-list>
+  <div class="mx-auto max-w-[1200px] px-4 py-6">
+    <div class="flex flex-col gap-6 md:flex-row">
+      <div class="w-full">
+        <task-list [tasks]="tasks"></task-list>
+      </div>
+
+      <div class="hidden">
+        <task-details-view></task-details-view>
+      </div>
     </div>
   </div>
 </main>

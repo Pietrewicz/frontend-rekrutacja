@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { TaskListComponent } from '../../components/task-list/task-list.component';
 import { Task, TaskStatus } from '../../models/task';
+import { TaskDetailsViewComponent } from '../task-details-view/task-details-view.component';
 
 @Component({
   selector: 'task-list-view',
-  imports: [TaskListComponent],
+  imports: [TaskListComponent, TaskDetailsViewComponent],
   templateUrl: './task-list-view.component.html',
   styleUrl: './task-list-view.component.css',
 })
@@ -20,7 +21,7 @@ export class TaskListViewComponent {
       dueDate: new Date(2025, 6, 19),
       user: {
         name: 'Anna Kowalczyk',
-        avatar: 'assets/img/av5_w.JPG',
+        avatar: 'av5_w.JPG',
       },
     },
     {
@@ -33,7 +34,7 @@ export class TaskListViewComponent {
       dueDate: new Date(2025, 6, 22),
       user: {
         name: 'Marcin Nowak',
-        avatar: 'assets/img/av1.JPG',
+        avatar: 'av1.JPG',
       },
     },
     {
@@ -46,7 +47,7 @@ export class TaskListViewComponent {
       dueDate: new Date(2025, 6, 14),
       user: {
         name: 'Katarzyna Wiśniewska',
-        avatar: 'assets/img/av6_w.JPG',
+        avatar: 'av6_w.JPG',
       },
     },
     {
@@ -59,7 +60,7 @@ export class TaskListViewComponent {
       dueDate: new Date(2025, 6, 10),
       user: {
         name: 'Tomasz Grabowski',
-        avatar: 'assets/img/av2.JPG',
+        avatar: 'av2.JPG',
       },
     },
     {
@@ -72,7 +73,7 @@ export class TaskListViewComponent {
       dueDate: new Date(2025, 7, 1),
       user: {
         name: 'Marek Kowalski',
-        avatar: 'assets/img/av3.JPG',
+        avatar: 'av3.JPG',
       },
     },
     {
@@ -95,7 +96,7 @@ export class TaskListViewComponent {
       dueDate: new Date(2025, 6, 10),
       user: {
         name: 'Paweł Janowski',
-        avatar: 'assets/img/av4.JPG',
+        avatar: 'av4.jpg',
       },
     },
   ];
