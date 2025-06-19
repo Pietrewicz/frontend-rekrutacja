@@ -1,0 +1,17 @@
+<span
+  [ngClass]="{
+    'bg-orange-100 text-orange-600': status === 'W trakcie',
+    'bg-blue-100 text-blue-600': status === 'Do zrobienia',
+    'bg-green-100 text-green-600': status === 'Ukończone',
+  }"
+  class="flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold whitespace-nowrap"
+>
+  <i
+    [ngClass]="{
+      'iconoir-refresh': status === 'W trakcie',
+      hidden: status === 'Do zrobienia',
+      'iconoir-check': status === 'Ukończone',
+    }"
+  ></i>
+  {{ status }}
+</span>

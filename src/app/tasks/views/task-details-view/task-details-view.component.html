@@ -1,1 +1,53 @@
-<p>task-details-view works!</p>
+<div
+  class="flex w-full max-w-2xl flex-col gap-6 rounded-xl bg-white p-6 shadow-md"
+>
+  <div class="flex items-start justify-between">
+    <task-status [status]="task?.status"></task-status>
+
+    <button
+      aria-label="Zamknij szczegóły"
+      class="cursor-pointer text-2xl leading-none text-gray-400 transition duration-200 hover:text-black"
+      (click)="onClose?.()"
+    >
+      <span class="iconoir-xmark"></span>
+    </button>
+  </div>
+
+  <!-- Tytuł -->
+  <h2 class="text-2xl leading-tight font-bold text-gray-900">
+    {{ task?.title }}
+  </h2>
+
+  <!-- Osoba przypisana -->
+  <div class="flex items-center gap-3 text-sm text-gray-500">
+    @if (task?.user) {
+      <img
+        [src]="'assets/img/' + task?.user?.avatar"
+        alt="{{ task?.user?.name }}"
+        class="h-8 w-8 rounded-full object-cover"
+      />
+      <span>
+        {{ task?.user?.name }}
+      </span>
+    } @else {
+      <i class="iconoir-user-xmark text-xl text-gray-500"></i>
+      <span>Nie przypisano</span>
+    }
+  </div>
+
+  <!-- Opis -->
+  <p class="text-base leading-relaxed text-gray-700">
+    {{ task?.description }}
+  </p>
+
+  <!-- Szczegóły: czas i termin -->
+  <div class="mt-2 flex gap-8 text-sm text-gray-600">
+    <span class="flex items-center gap-1">
+      <i class="iconoir-clock text-sm"></i> {{ task?.time }}
+    </span>
+    <span class="flex items-center gap-1">
+      <i class="iconoir-calendar text-sm"></i>
+      {{ task?.dueDate | date: "dd.MM.yyyy" }}
+    </span>
+  </div>
+</div>

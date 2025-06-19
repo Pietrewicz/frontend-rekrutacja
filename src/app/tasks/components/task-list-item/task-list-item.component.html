@@ -6,11 +6,19 @@
 >
   <article class="flex w-full items-start justify-between gap-4">
     <div class="flex w-full items-center gap-3">
-      <img
-        [src]="'assets/img/' + task?.user?.avatar"
-        alt="{{ task?.user?.name || 'Nieprzypisano' }}"
-        class="h-8 w-8 rounded-full object-cover"
-      />
+      <div
+        class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-200"
+      >
+        @if (task?.user) {
+          <img
+            [src]="'assets/img/' + task?.user?.avatar"
+            alt="{{ task?.user?.name }}"
+            class="h-8 w-8 rounded-full object-cover"
+          />
+        } @else {
+          <i class="iconoir-user-xmark text-xl text-gray-500"></i>
+        }
+      </div>
 
       <div class="w-full">
         <div class="mb-2 flex w-full items-start justify-between">
@@ -22,24 +30,7 @@
             {{ task?.title }}
           </h3>
 
-          <!-- Status -->
-          <span
-            [ngClass]="{
-              'bg-orange-100 text-orange-600': task?.status === 'W trakcie',
-              'bg-blue-100 text-blue-600': task?.status === 'Do zrobienia',
-              'bg-green-100 text-green-600': task?.status === 'Ukończone',
-            }"
-            class="flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold whitespace-nowrap"
-          >
-            <i
-              [ngClass]="{
-                'iconoir-refresh': task?.status === 'W trakcie',
-                hidden: task?.status === 'Do zrobienia',
-                'iconoir-check': task?.status === 'Ukończone',
-              }"
-            ></i>
-            {{ task?.status }}
-          </span>
+          <task-status [status]="task?.status"></task-status>
         </div>
 
         <div class="mt-1 flex items-center gap-4 text-xs text-gray-500">

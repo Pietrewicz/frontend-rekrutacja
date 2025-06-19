@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
-import { TaskListComponent } from '../../components/task-list/task-list.component';
+import { Component, signal } from '@angular/core';
 import { Task, TaskStatus } from '../../models/task';
 import { TaskDetailsViewComponent } from '../task-details-view/task-details-view.component';
+import { TaskListItemComponent } from '../../components/task-list-item/task-list-item.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'task-list-view',
-  imports: [TaskListComponent, TaskDetailsViewComponent],
+  imports: [TaskDetailsViewComponent, TaskListItemComponent, CommonModule],
   templateUrl: './task-list-view.component.html',
   styleUrl: './task-list-view.component.css',
 })
 export class TaskListViewComponent {
+  selectedTask = signal<Task | null>(null);
   tasks: Task[] = [
     {
       id: 1,
@@ -96,8 +98,14 @@ export class TaskListViewComponent {
       dueDate: new Date(2025, 6, 10),
       user: {
         name: 'Paweł Janowski',
-        avatar: 'av4.jpg',
+        avatar: 'av4.JPG',
       },
     },
   ];
+
+  clearSelectedTask = () => this.selectedTask.set(null);
+
+  selectTask(task: Task) {
+    this.selectedTask.set(task);
+  }
 }

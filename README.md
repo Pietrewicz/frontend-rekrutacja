@@ -88,3 +88,4 @@ Planowane rozpoczęcie: 19.06
     - 8:30 początek zadania, utworzenie komponentów
     - 9:30 przerwa techniczna, bug fixing - klasy tailwinda przestały działać
     - 10:15 resume kodowania po naprawieniu buga
+    - 11:10 zmiana struktury, ujednolicenie task-list-view.component i task-list.component do operowania wybranym taskiem w jednym miejscu
