@@ -84,3 +84,5 @@ Dodatkowo, gdy data terminu już minęła, na ikonie pojawi się alert (ping).
     - utworzenie bazowej struktury folderów, dodanie assets
 
 Planowane rozpoczęcie: 19.06
+19.06
+    - 8:30 początek zadania, utworzenie komponentów
